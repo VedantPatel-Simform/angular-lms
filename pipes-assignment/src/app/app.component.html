@@ -1,0 +1,19 @@
+<!-- <h1>Data List</h1>
+
+<h1>Data List</h1>
+
+<div *ngIf="obs$ | async as users; else loading">
+  <div *ngFor="let user of users ">
+    <h2>{{ user.name }}</h2>
+    <p>{{ user.phone }}</p>
+  </div>
+</div>
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template> -->
+<!-- <p *ngFor="let item of obs$ | async">{{ item | json }}</p> -->
+
+@for (item of obs$ | async; track $index) {
+<h1>{{$index + 1}}. {{item.username}}</h1>
+<h2>{{item.phone | censorPhone}}</h2>
+}
