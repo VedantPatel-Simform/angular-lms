@@ -1,0 +1,27 @@
+<h2 class="notes-title">Notes</h2>
+
+<!-- Form -->
+<form class="note-form" (ngSubmit)="saveNote()">
+    <input type="text" class="form-input" placeholder="Title" [(ngModel)]="formNote.name" name="name" required />
+    <input type="date" class="form-input" [(ngModel)]="formNote.date" name="date" required />
+    <textarea class="form-textarea" placeholder="Write your note..." [(ngModel)]="formNote.content"
+        name="content"></textarea>
+
+    <div class="form-buttons">
+        <button type="submit" class="btn btn-primary">{{ isEdit ? 'Update' : 'Add' }} Note</button>
+        <button type="button" class="btn btn-secondary" (click)="resetForm()">Clear</button>
+    </div>
+</form>
+
+<!-- Notes List -->
+<ul class="notes-list">
+    @for (note of notes; track $index) {
+    <li class="note-item">
+        <a class="note-link" (click)="viewNote(note.id)">{{ note.name }}</a>
+        <div class="note-actions">
+            <button class="btn btn-edit" (click)="editNote(note)">Edit</button>
+            <button class="btn btn-delete" (click)="deleteNote(note.id)">Delete</button>
+        </div>
+    </li>
+    }
+</ul>
